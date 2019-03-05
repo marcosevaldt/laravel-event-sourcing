@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Projectors\AccountBalanceProjector;
+use Spatie\EventProjector\Projectionist;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,8 +23,8 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Projectionist $projectionist)
     {
-        //
+        $projectionist->addProjector(AccountBalanceProjector::class);
     }
 }
